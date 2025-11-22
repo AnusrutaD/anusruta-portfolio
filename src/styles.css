@@ -1,0 +1,207 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100 font-sans;
+  }
+
+  /* Dark background glow */
+  html.dark body {
+    background-image: radial-gradient(circle at top,
+        rgba(99, 102, 241, 0.18),
+        transparent 60%);
+  }
+
+  /* Light background glow (subtle) */
+  html:not(.dark) body {
+    background-image: radial-gradient(circle at top,
+        rgba(129, 140, 248, 0.08),
+        transparent 60%);
+  }
+}
+
+/* Reusable glass panel for cards / hero / sections */
+@layer components {
+  .glass-panel {
+    @apply rounded-3xl border backdrop-blur-xl transition-all duration-300;
+
+    /* Light mode – bright glass card */
+    @apply bg-white/80 border-slate-200 text-slate-800 shadow-lg;
+
+    /* Dark mode – darker glass card */
+    @apply dark:bg-slate-900/50 dark:border-white/10 dark:text-slate-100;
+  }
+
+  .pill-badge {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-[11px] font-medium transition-all duration-300;
+
+    /* Light mode */
+    @apply bg-slate-200 text-slate-700 border border-slate-300/70;
+
+    /* Dark mode */
+    @apply dark:bg-white/5 dark:border-white/10 dark:text-slate-200;
+  }
+}
+
+/* Smooth scroll for in-page links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* -----------------------------------------------------
+   DARK MODE — Premium Elevation Layers
+----------------------------------------------------- */
+
+:root.dark {
+  --bg-base: #0a0f1f;
+  --bg-surface-1: rgba(20, 25, 45, 0.6);
+  --bg-surface-2: rgba(30, 35, 55, 0.55);
+}
+
+/* Dark Mode Shadows */
+.dark .shadow-card {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+}
+
+.dark .shadow-card-lg {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.75);
+}
+
+.shadow-card {
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.shadow-card-lg {
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+}
+
+.dark .shadow-card {
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
+}
+
+.dark .shadow-card-dark {
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.65);
+}
+
+/* -----------------------------------------------------
+   FUTURISTIC HERO IMAGE SYSTEM
+----------------------------------------------------- */
+
+/* Floating motion */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Neon pulse ring (behind image) */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.65;
+  }
+
+  100% {
+    transform: scale(1.1);
+    opacity: 0.3;
+  }
+}
+
+.neon-ring {
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  z-index: -1;
+  background: radial-gradient(circle,
+      rgba(124, 58, 237, 0.55),
+      rgba(59, 130, 246, 0.35),
+      transparent);
+  animation: pulse-ring 3.5s ease-in-out infinite alternate;
+  filter: blur(18px);
+}
+
+/* Cyberpunk vertical scanning light */
+@keyframes scan {
+  0% {
+    transform: translateY(-120%);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: translateY(120%);
+    opacity: 0;
+  }
+}
+
+.holo-scan::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+      transparent,
+      rgba(255, 255, 255, 0.18),
+      transparent);
+  animation: scan 3.2s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+
+/* Orbiting light particles */
+@keyframes orbit {
+  from {
+    transform: rotate(0deg) translateX(50px) rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg) translateX(50px) rotate(-360deg);
+  }
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  filter: blur(3px);
+}
+
+.particle:nth-child(1) {
+  animation: orbit 6s linear infinite;
+}
+
+.particle:nth-child(2) {
+  animation: orbit 8s linear infinite reverse;
+}
+
+.particle:nth-child(3) {
+  animation: orbit 10s linear infinite;
+}
+
+/* 3D mouse-follow tilt */
+.tilt-3d {
+  transform-style: preserve-3d;
+  perspective: 1600px;
+}

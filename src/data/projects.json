@@ -1,0 +1,40 @@
+[
+  {
+    "title": "Tweet Generation App",
+    "period": "2025",
+    "description": "A Generative AI powered Tweet Generation App built with Python, Streamlit, and Google\u2019s Gemini 2.0, enabling users to generate structured, safe, and on-topic tweets.",
+    "tech": [
+      "Python",
+      "Streamlit",
+      "Gemini 2.0",
+      "Generative AI",
+      "Prompt Engineering"
+    ],
+    "link": "https://github.com/AnusrutaD"
+  },
+  {
+    "title": "Personal Portfolio",
+    "period": "2024",
+    "description": "A React SPA portfolio showcasing backend engineering, system design, and Generative AI work. Features 3D animations, dark/light mode, OG generator, SEO, and Vercel deployment.",
+    "tech": [
+      "React",
+      "Tailwind CSS",
+      "Vite",
+      "Framer Motion"
+    ],
+    "link": "https://anusrutadutta.com"
+  },
+  {
+    "title": "Backend Optimization & Modernization",
+    "period": "WiseTech Global",
+    "description": "Refactored and modernized core backend modules, optimized queries, and improved pagination performance for high-traffic distributed systems.",
+    "tech": [
+      "Java",
+      "Spring Boot",
+      "MySQL",
+      "Stream API",
+      "Microservices"
+    ],
+    "link": null
+  }
+]
