@@ -5,6 +5,7 @@ import {
   SiLeetcode,
   SiInstagram,
 } from "react-icons/si";
+import LogoMicro from "./LogoMicro";
 
 const socials = [
   { icon: <SiLinkedin />, link: "https://linkedin.com/in/anusruta-dutta" },
@@ -31,6 +32,7 @@ export default function Footer() {
       </div>
 
       <p className="text-xs text-slate-500 dark:text-slate-400">
+        <LogoMicro className="h-4 w-4 opacity-70" />
         © {new Date().getFullYear()} Anusruta Dutta — All rights reserved.
       </p>
     </footer>

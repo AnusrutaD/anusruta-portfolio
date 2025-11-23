@@ -1,0 +1,7 @@
+<svg width="512" height="512" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <title>Anusruta Dutta Monogram</title>
+    <!-- Left Shape (The A Ascender) -->
+    <path d="M40 20L10 90H35L52 50L40 20Z" fill="#000000"/>
+    <!-- Right Shape (The D Curve/Descender) -->
+    <path d="M50 20H65C82 20 90 35 90 55C90 75 82 90 65 90H50L62 60L50 20Z" fill="#000000" fill-opacity="0.9"/>
+</svg>

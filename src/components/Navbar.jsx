@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle.jsx";
 import { useEffect, useState } from "react";
+import BrandHeader from "./BrandHeader.jsx";
 
 const Navbar = () => {
   const { pathname } = useLocation();
@@ -36,11 +37,8 @@ const Navbar = () => {
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         {/* Brand Name */}
-        <Link
-          to="/"
-          className="text-sm font-semibold tracking-wide text-slate-900 dark:text-slate-100 transition hover:text-brand-primary"
-        >
-          ANUSRUTA DUTTA
+        <Link to="/" className="flex items-center gap-3">
+          <BrandHeader />
         </Link>
 
         {/* Nav Links */}

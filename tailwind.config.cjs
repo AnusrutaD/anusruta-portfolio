@@ -2,6 +2,16 @@
 module.exports = {
   darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,jsx}"],
+
+  // ✅ Prevent Tailwind from purging watermark classes
+  safelist: [
+    { pattern: /w-\[.*\]/ },
+    { pattern: /h-\[.*\]/ },
+    { pattern: /opacity-\[.*\]/ },
+    { pattern: /right-\[.*\]/ },
+    { pattern: /top-\[.*\]/ },
+  ],
+
   theme: {
     extend: {
       fontFamily: {
@@ -14,6 +24,7 @@ module.exports = {
           "sans-serif",
         ],
       },
+
       colors: {
         // Primary brand colors
         brand: {
@@ -35,12 +46,14 @@ module.exports = {
           dark: "#94A3B8",
         },
       },
+
       backgroundImage: {
         "brand-radial":
           "radial-gradient(circle at top, rgba(99,102,241,0.18), transparent 60%)",
         "brand-linear":
           "linear-gradient(135deg, rgba(99,102,241,0.3), rgba(14,165,233,0.25), rgba(34,197,94,0.25))",
       },
+
       boxShadow: {
         "soft-card":
           "0 18px 45px rgba(15,23,42,0.75), 0 0 0 1px rgba(148,163,184,0.08)",
@@ -48,18 +61,22 @@ module.exports = {
         "glow-soft":
           "0 0 18px rgba(99,102,241,0.28), 0 0 28px rgba(34,197,94,0.18)",
       },
+
       borderRadius: {
         xl: "0.9rem",
         "2xl": "1.25rem",
         "3xl": "1.75rem",
       },
+
       opacity: {
         15: "0.15",
       },
+
       backdropBlur: {
         xs: "2px",
       },
     },
   },
+
   plugins: [require("@tailwindcss/typography")],
 };

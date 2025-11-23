@@ -7,6 +7,8 @@ import { usePreferencesStore } from "../store/usePreferencesStore.js";
 import Parallax from "./Parallax.jsx";
 import heroImage from "/images/profile-hero.png";
 
+import LogoHero from "./LogoHero.jsx";
+import LogoWatermark from "./LogoWatermark.jsx";
 
 const AvatarCanvas = lazy(() => import("./AvatarCanvas.jsx"));
 
@@ -16,9 +18,7 @@ const fadeUp = {
 };
 
 const stagger = {
-  show: {
-    transition: { staggerChildren: 0.12 },
-  },
+  show: { transition: { staggerChildren: 0.12 } },
 };
 
 const Hero = () => {
@@ -26,39 +26,34 @@ const Hero = () => {
 
   return (
     <section className="relative mt-8 md:mt-12">
-      {/* Radial Glow Behind Hero */}
-      <Parallax offset={30} className="absolute inset-0 -z-10 opacity-60">
-        <div className="w-full h-full bg-brand-radial" />
-      </Parallax>
-
-      {/* Particle Background (Optional) */}
-      {showParticles && (
-        <div className="absolute inset-0 -z-10 opacity-20 pointer-events-none">
-          <svg className="w-full h-full">
-            {[...Array(50)].map((_, i) => (
-              <circle
-                key={i}
-                cx={Math.random() * 800}
-                cy={Math.random() * 600}
-                r={Math.random() * 2 + 1}
-                fill="rgba(255,255,255,0.6)"
-              />
-            ))}
-          </svg>
-        </div>
-      )}
-
       <motion.div
         initial="hidden"
         animate="show"
         variants={stagger}
-        className="grid gap-10 px-8 py-14 md:grid-cols-2 rounded-3xl shadow-card-lg backdrop-blur-xl"
-        style={{
-          backgroundColor: "var(--bg-surface-1)",
-        }}
+        className="relative grid gap-10 px-8 py-14 md:grid-cols-2 rounded-3xl shadow-card-lg backdrop-blur-xl overflow-hidden"
+        style={{ backgroundColor: "var(--bg-surface-1)" }}
       >
-        {/* LEFT SIDE — TEXT */}
-        <div className="space-y-7">
+        {/* WATERMARK INSIDE CARD */}
+        <LogoWatermark
+          className="
+            absolute 
+            right-6 
+            top-6
+            w-[320px]
+            h-[320px]
+            text-slate-400 
+            dark:text-white
+            opacity-5
+            z-0
+            select-none
+            pointer-events-none
+          "
+        />
+
+        {/* LEFT CONTENT */}
+        <div className="space-y-7 relative z-10">
+          <LogoHero className="w-20 h-20 md:w-24 md:h-24 mb-4 text-brand-primary" />
+
           <motion.div variants={fadeUp}>
             <span className="pill-badge bg-white/50 text-slate-800 border-white/60 dark:bg-white/10 dark:text-white">
               Backend Engineer • Java • Microservices • GenAI
@@ -80,21 +75,19 @@ const Hero = () => {
             </motion.h1>
           </Parallax>
 
-          {/* Typewriter */}
           <Parallax offset={15}>
             <motion.div variants={fadeUp}>
               <Typewriter
-                  words={[
-                    "Backend Engineer (Java)",
-                    "Spring Boot • Microservices • Kafka",
-                    "700+ LeetCode • System Design",
-                    "Exploring Generative AI & LLMs",
-                  ]}
-                />
+                words={[
+                  "Backend Engineer (Java)",
+                  "Spring Boot • Microservices • Kafka",
+                  "700+ LeetCode • System Design",
+                  "Exploring Generative AI & LLMs",
+                ]}
+              />
             </motion.div>
           </Parallax>
 
-          {/* Short bio */}
           <motion.p
             variants={fadeUp}
             className="max-w-lg text-sm leading-relaxed text-slate-700 dark:text-slate-300"
@@ -102,7 +95,6 @@ const Hero = () => {
             {profile.about[0]}
           </motion.p>
 
-          {/* CTA Buttons */}
           <motion.div variants={fadeUp} className="flex gap-4">
             <Button href="/projects" className="shadow-glow">
               🚀 View Projects
@@ -122,23 +114,12 @@ const Hero = () => {
               🔗 Connect on LinkedIn
             </Button>
           </motion.div>
-
-          {/* Floating Badges */}
-          <Parallax offset={25}>
-            <motion.div variants={fadeUp} className="mt-5 flex flex-wrap gap-3">
-              <span className="pill-badge">4+ Years Experience</span>
-              <span className="pill-badge">700+ LeetCode</span>
-              <span className="pill-badge">Java • Spring Boot</span>
-              <span className="pill-badge">Distributed Systems</span>
-              <span className="pill-badge">Generative AI</span>
-            </motion.div>
-          </Parallax>
         </div>
 
-        {/* RIGHT SIDE — 3D AVATAR */}
+        {/* RIGHT SIDE IMAGE */}
         <motion.div
           variants={fadeUp}
-          className="flex items-center justify-center"
+          className="flex items-center justify-center relative z-10"
         >
           <Parallax offset={30}>
             <motion.div
@@ -153,10 +134,8 @@ const Hero = () => {
               className="relative p-2 rounded-3xl bg-gradient-to-br from-slate-800/30 to-slate-900/10 backdrop-blur-lg"
               style={{ perspective: 1000 }}
             >
-              {/* Glow behind the image */}
-              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 blur-3xl"></div>
+              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-purple-500/15 to-blue-500/15 blur-3xl" />
 
-              {/* Actual hero image */}
               <img
                 src={heroImage}
                 alt="Anusruta Portrait"

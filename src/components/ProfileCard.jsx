@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { FaLinkedin, FaGithub, FaXTwitter, FaInstagram } from "react-icons/fa6";
 
 import profilePhoto from "/images/profile.png"; // <-- your uploaded photo
+import LogoAnimated from "./LogoAnimated";
 
 const ProfileCard = () => {
   return (
@@ -45,7 +46,8 @@ const ProfileCard = () => {
 
         {/* === Text Section === */}
         <div className="flex-1 space-y-3">
-          <h2 className="text-2xl font-semibold text-slate-900 dark:text-slate-100">
+          <h2 className="text-3xl font-semibold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+            <LogoAnimated className="h-8 w-8 text-slate-900 dark:text-white" />
             Anusruta Dutta
           </h2>
 
