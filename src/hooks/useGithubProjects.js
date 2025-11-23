@@ -1,35 +1,33 @@
 import { useEffect, useState } from "react";
 
-export function useGithubProjects(username, allowList = []) {
+export function useGithubProjects() {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    async function loadRepos() {
+    const loadData = async () => {
       try {
-        const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
+        setLoading(true);
+
+        const res = await fetch("/api/projects");
         const data = await res.json();
 
-        if (!Array.isArray(data)) {
-          setError("GitHub API Error");
-          setLoading(false);
-          return;
+        if (res.ok) {
+          setProjects(data);
+        } else {
+          setError("Failed to load GitHub projects");
         }
-
-        // Filter by allow list
-        const filtered = data.filter(repo => allowList.includes(repo.name));
-
-        setProjects(filtered);
       } catch (err) {
-        setError(err.message);
+        console.error(err);
+        setError("Failed to load GitHub repositories");
       } finally {
         setLoading(false);
       }
-    }
+    };
 
-    loadRepos();
-  }, [username, allowList]);
+    loadData();
+  }, []);
 
   return { projects, loading, error };
 }
