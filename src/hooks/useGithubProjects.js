@@ -17,8 +17,6 @@ export function useGithubProjects(username, allowList = []) {
           return;
         }
 
-        console.log(data);
-
         // Filter by allow list
         const filtered = data.filter(repo => allowList.includes(repo.name));
 
